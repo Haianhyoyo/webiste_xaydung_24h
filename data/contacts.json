@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1767930453807,
+    "name": "Nguyễn Hải Anh",
+    "email": null,
+    "phone": "0869851345",
+    "service": "Cổng sắt mỹ thuật",
+    "message": "Mình cần hỗ trợ tư vấn cổng sắt mỹ thuật ạ",
+    "createdAt": "2026-01-09T03:47:33.807Z"
+  },
+  {
+    "id": 1768731849557,
+    "name": "Nguyễn Hải Đông",
+    "email": null,
+    "phone": "0869851345",
+    "service": "Cổng tự động",
+    "message": "tôi cần tư vấn nhanh",
+    "createdAt": "2026-01-18T10:24:09.557Z"
+  },
+  {
+    "id": 1768732510031,
+    "name": "Test User",
+    "email": null,
+    "phone": "0123456789",
+    "service": "Cổng Nhôm Đúc",
+    "message": "Đăng ký tư vấn dịch vụ: Cổng Nhôm Đúc",
+    "createdAt": "2026-01-18T10:35:10.031Z"
+  },
+  {
+    "id": 1768732577251,
+    "name": "Test User HK",
+    "email": null,
+    "phone": "0112233445",
+    "service": "Cổng Hợp Kim Nhôm",
+    "message": "Đăng ký tư vấn dịch vụ: Cổng Hợp Kim Nhôm",
+    "createdAt": "2026-01-18T10:36:17.251Z"
+  },
+  {
+    "id": 1768732656589,
+    "name": "User LC Manual",
+    "email": null,
+    "phone": "0123456789",
+    "service": "Lan Can & Cầu Thang",
+    "message": "Đăng ký tư vấn dịch vụ: Lan Can & Cầu Thang",
+    "createdAt": "2026-01-18T10:37:36.589Z"
+  },
+  {
+    "id": 1768732980934,
+    "name": "Nguyễn Hải Anh",
+    "email": null,
+    "phone": "0869851345",
+    "service": "Cổng CNC",
+    "message": "Đăng ký tư vấn dịch vụ: Cổng CNC",
+    "createdAt": "2026-01-18T10:43:00.934Z"
+  },
+  {
+    "id": 1768733023138,
+    "name": "Nguyễn văn sỹ",
+    "email": null,
+    "phone": "0869851345",
+    "service": "Thang Máy",
+    "message": "Đăng ký tư vấn dịch vụ: Thang Máy",
+    "createdAt": "2026-01-18T10:43:43.138Z"
+  },
+  {
+    "id": 1768733046292,
+    "name": "Nguyễn văn đạt",
+    "email": null,
+    "phone": "0869851345",
+    "service": "Khác",
+    "message": "Đăng ký tư vấn dịch vụ: Khác",
+    "createdAt": "2026-01-18T10:44:06.292Z"
+  },
+  {
+    "id": 1768733080707,
+    "name": "Nguyễn văn Tiến",
+    "email": null,
+    "phone": "0869851345",
+    "service": "Cổng Sắt Mỹ Thuật",
+    "message": "Đăng ký tư vấn dịch vụ: Cổng Sắt Mỹ Thuật",
+    "createdAt": "2026-01-18T10:44:40.707Z"
+  }
+]
