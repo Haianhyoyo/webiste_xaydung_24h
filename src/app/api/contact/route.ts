@@ -15,6 +15,7 @@ export async function POST(req: Request) {
         const name = body?.name?.toString().trim();
         const phone = body?.phone?.toString().trim();
         const message = body?.message?.toString().trim();
+        const service = body?.service?.toString().trim();
         const page = body?.page?.toString().trim();
 
         if (!name || !phone) {
