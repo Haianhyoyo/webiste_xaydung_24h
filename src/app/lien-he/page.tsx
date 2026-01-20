@@ -23,11 +23,11 @@ export default function ContactPage() {
                 body: JSON.stringify(formData)
             });
             const data = await res.json();
-            if (res.ok && data.success) {
+            if (res.ok && data.ok) {
                 alert('Gửi thành công. Chúng tôi sẽ liên hệ lại sớm.');
                 setFormData({ name: '', phone: '', service: 'Cổng nhôm đúc', message: '' });
             } else {
-                alert('Gửi thất bại: ' + (data.error || 'Lỗi server'));
+                alert('Gửi thất bại: ' + (data.message || 'Lỗi server'));
             }
         } catch (err) {
             console.error(err);
