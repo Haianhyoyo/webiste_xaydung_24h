@@ -30,6 +30,7 @@ export async function POST(req: Request) {
                 name,
                 phone,
                 message,
+                service,
                 page,
                 user_agent: req.headers.get("user-agent") || "",
             },
