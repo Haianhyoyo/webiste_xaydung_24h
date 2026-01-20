@@ -1,59 +1,50 @@
-import { NextResponse } from 'next/server';
-import path from 'path';
-import { promises as fs } from 'fs';
+import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
-const DATA_DIR = path.join(process.cwd(), 'data');
-const CONTACTS_FILE = path.join(DATA_DIR, 'contacts.json');
+export const runtime = "nodejs";
 
-async function ensureDataFile() {
+const supabase = createClient(
+    process.env.SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
+
+export async function POST(req: Request) {
     try {
-        await fs.mkdir(DATA_DIR, { recursive: true });
-        try {
-            await fs.access(CONTACTS_FILE);
-        } catch {
-            await fs.writeFile(CONTACTS_FILE, '[]', 'utf8');
-        }
-    } catch (err) {
-        console.error('Failed to ensure data file', err);
-    }
-}
+        const body = await req.json();
 
-export async function POST(request: Request) {
-    try {
-        const body = await request.json();
-        const { name, email, phone, message, service } = body;
+        const name = body?.name?.toString().trim();
+        const phone = body?.phone?.toString().trim();
+        const message = body?.message?.toString().trim();
+        const page = body?.page?.toString().trim();
 
-        if (!name || (!email && !phone) || !message) {
-            return NextResponse.json({ error: 'Missing fields: name, message and email or phone required' }, { status: 400 });
+        if (!name || !phone) {
+            return NextResponse.json(
+                { ok: false, message: "Thiếu tên hoặc số điện thoại" },
+                { status: 400 }
+            );
         }
 
-        await ensureDataFile();
+        const { error } = await supabase.from("contacts").insert([
+            {
+                name,
+                phone,
+                message,
+                page,
+                user_agent: req.headers.get("user-agent") || "",
+            },
+        ]);
 
-        let contacts = [];
-        try {
-            const fileContent = await fs.readFile(CONTACTS_FILE, 'utf8');
-            contacts = JSON.parse(fileContent || '[]');
-        } catch {
-            contacts = [];
+        if (error) {
+            console.error("Supabase error:", error);
+            throw error;
         }
 
-        const newContact = {
-            id: Date.now(),
-            name,
-            email: email || null,
-            phone: phone || null,
-            service: service || null,
-            message,
-            createdAt: new Date().toISOString()
-        };
-
-        contacts.push(newContact);
-
-        await fs.writeFile(CONTACTS_FILE, JSON.stringify(contacts, null, 2), 'utf8');
-
-        return NextResponse.json({ success: true });
-    } catch (error) {
-        console.error('API Error:', error);
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+        return NextResponse.json({ ok: true });
+    } catch (err: any) {
+        console.error("API Error:", err);
+        return NextResponse.json(
+            { ok: false, message: err?.message || "Internal Server Error" },
+            { status: 500 }
+        );
     }
 }
