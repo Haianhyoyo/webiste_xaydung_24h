@@ -15,8 +15,11 @@ export async function POST(req: Request) {
         const name = body?.name?.toString().trim();
         const phone = body?.phone?.toString().trim();
         const message = body?.message?.toString().trim();
-        const service = body?.service?.toString().trim();
+        // Safe extraction with fallback
+        const service = body?.service?.toString()?.trim() || "Tư vấn chung";
         const page = body?.page?.toString().trim();
+
+        console.log("Received contact submission:", { name, phone, service });
 
         if (!name || !phone) {
             return NextResponse.json(
